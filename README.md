@@ -1,6 +1,7 @@
-# Code 301: Intermediate Software Development
+# Bootcamp: Part Two
+## Intermediate Software Development
 
-Welcome to Code 301! This class builds on your fundamental knowledge of HTML, CSS, JavaScript, git, and general web development, to prepare you for the deep dive of any Code 401 class.
+Welcome to Part Two! This class builds on your fundamental knowledge of HTML, CSS, JavaScript, git, and general web development, to prepare you for the deep dive of any career track.
 
 # Introduction
 
@@ -19,13 +20,13 @@ Module 4     | Project Week
 
 We will have our own GitHub Organization to manage all of our repositories. All lecture notes and information will be found in this repo, under that day's directory. Your daily labs will have their own repo within this organization.
 
-## Slides from class
+## Slides, Screencasts, Notes
 
-Any slides used during class will be sent out via Ryver after class. Lecture outlines and notes will be in each lecture's directory's README.
+Any slides used during class will be available from the shared Google Drive linked in the Ryver channel. Lecture outlines and notes will be in each lecture's directory's README. Lectures will also be screencast and uploaded to our class YouTube playlist (linked in the Ryver channel).
 
 ## Assignments
 
-1. Daily lab assignments will follow each class time. Each lab has its own repo.
+1. Daily lab assignments will follow each class time. Each lab has its own repo in our organization.
     - Instructions for completing assignments can be found in their repo's README file.
     - Most labs will be completed as pairs.
     - Lab assignments will be submitted using a professional-grade [git-flow](SUBMIT_WITH_GIT.md) aka lots and lots of PR's.
@@ -41,7 +42,7 @@ Any slides used during class will be sent out via Ryver after class. Lecture out
 1. Weekly quizzes
     - Assigned Wednesday and are due Friday morning.
     - Open-internet! Use your research skills to try code snippets in the console, or read the docs on MDN.
-    - These quizzes will prepare you for the 401 entry exam.
+    - These quizzes will prepare you for the final exam.
 
 1. Bonus assignments
     - Listed in Canvas, these will offer the chance to learn more and/or review the various topics we cover
@@ -49,4 +50,4 @@ Any slides used during class will be sent out via Ryver after class. Lecture out
 
 # Required Computer Setup
 
-Read through the [301 prework](https://github.com/alchemycodelab/code-301-prework) to make sure you have everything you need installed.
+Read through the [prework](https://github.com/alchemycodelab/bootcamp-part-two-prework) to make sure you have everything you need installed.
