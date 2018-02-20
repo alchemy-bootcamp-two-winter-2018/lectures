@@ -29,7 +29,7 @@ Any slides used during class will be available from the shared Google Drive link
 1. Daily lab assignments will follow each class time. Each lab has its own repo in our organization.
     - Instructions for completing assignments can be found in their repo's README file.
     - Most labs will be completed as pairs.
-    - Lab assignments will be submitted using a professional-grade [git-flow](SUBMIT_WITH_GIT.md) aka lots and lots of PR's.
+    - Lab assignments will be submitted using a professional-grade [git-flow](https://github.com/alchemy-bootcamp-two-winter-2018/submit-process) aka lots and lots of PR's.
 
 1. Daily learning journals
     - **Will not be accepted late.**
