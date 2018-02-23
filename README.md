@@ -37,11 +37,11 @@ Any slides used during class will be available from the shared Google Drive link
 
 1. Weekly Code Wars challenge
     - A specific challenge will be assigned for each week. We'll go over different solutions in class.
-    - You are also expected to work on Code Wars Challenges for practice through out the week.The goal is to gain 10 pts by each Friday.
+    - You are also expected to work on Code Wars Challenges for practice through out the week. The goal is to gain 10 pts by each Friday.
     - [Instructions for submitting](https://github.com/alchemy-bootcamp-two-winter-2018/code-wars)
 
-1. Weekly quizzes
-    - Assigned Wednesday and are due Friday morning.
+1. Twice weekly quizzes
+    - Due Wednesday and Friday midnights.
     - Open-internet! Use your research skills to try code snippets in the console, or read the docs on MDN.
     - These quizzes will prepare you for the final exam.
 
