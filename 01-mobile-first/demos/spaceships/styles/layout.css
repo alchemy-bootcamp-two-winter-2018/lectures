@@ -1,0 +1,24 @@
+#landing, #listings {
+    width: 100%;
+}
+
+#sidebar {
+    position: relative;
+}
+
+@media screen and (min-width: 900px) {
+    #landing {
+        width: 70%;
+    }
+    
+    #listings {
+        width: 70%;
+    }
+    
+    #sidebar {
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+}
