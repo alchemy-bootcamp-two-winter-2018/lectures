@@ -23,3 +23,21 @@
 ### Day 5
 * None!
 * Brownie points: read something not code related, just for fun (:
+
+
+## Week 2
+
+### Day 6
+
+### Day 7
+### Day 8
+### Day 9
+### Day 10
+
+## Week 3
+
+### Day 11
+### Day 12
+### Day 13
+### Day 14
+### Day 15
