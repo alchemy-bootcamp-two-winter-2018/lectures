@@ -73,13 +73,16 @@ $('ul').append($li);
 // $('*').remove();
 
 
-
 /***** run a command as soon as the DOM loads *****/
 /*** to ensure all our elements are loaded! ***/
+$(function () {
+    console.log('I was passed to jQuery!');
+});
+
 // $('document').ready(function () {
 //   alert('the DOM is ready for lift off');
 // });
 
 // window.addEventListener('load', function () {
-//   alert('window has loaded');
+//     alert('window has loaded');
 // });
