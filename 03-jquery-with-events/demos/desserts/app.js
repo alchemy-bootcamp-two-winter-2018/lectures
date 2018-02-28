@@ -28,18 +28,32 @@ dog.changeName('boop');  // won't change dog.name
 //                                                CREATING TABS WITH JQUERY
 
 // TODO replace these event listeners with jQuery event listeners
-const cakeTab = document.querySelector('[data-tab="cake"]');
-cakeTab.addEventListener('click', changeTabs);
+// const cakeTab = document.querySelector('[data-tab="cake"]');
+// cakeTab.addEventListener('click', changeTabs);
+// $('nav li:first-child').click(changeTabs);
 
-const iceCreamTab = document.querySelector('[data-tab="ice-cream"]');
-iceCreamTab.addEventListener('click', changeTabs);
 
-$('a[data-tab]').click(changeTabs);
+// const iceCreamTab = document.querySelector('[data-tab="ice-cream"]');
+// iceCreamTab.addEventListener('click', changeTabs);
+// $('nav li:last-child').click(changeTabs);
 
+$('[data-tab]').click(changeTabs);
 function changeTabs () {
     // get the data-tab attribute of the link that was clicked
     // TODO use jQuery to get the data-tab value instead of getAttribute
-    const clickedTabData = event.target.getAttribute('data-tab');
+                         // event.target.getAttribute('data-tab');
+
+    const clickedTabData = $(this).attr('data-tab');
+    // const clickedTabData = $(event.target).attr('data-tab');
+    $('section').not(`#${clickedTabData}`).hide();
+    $(`#${clickedTabData}`).show();
+
+    // '#' + clickedTabData === `#${clickedTabData}`
+    // $('section').not('#' + clickedTabData).hide();
+    // $('section').not('#cake').hide();
+    // 'section:not(#cake)'  === 
+    // 'section:not(#' + clickedTabData + ')' ===
+    // `section:not(#${clickedTabData})`
 
     // TODO hide all sections and reveal the appropriate section 
     // (note: the sections have ids to match the data-tab values)
@@ -47,7 +61,7 @@ function changeTabs () {
 }
 
 // TODO simulate a click on the cake section so its open
-
+$('[data-tab="ice-cream"]').click();
 
 
 //                                                                    CAKE VIEW
@@ -121,23 +135,42 @@ iceCreamView.init = function () {
 
 iceCreamView.handleCone = function () {
     // TODO add new scoops to the cone when the cone is clicked
+    $('#cone').on('click', function () {
+        $('[data-type="cone"] .scoop:first-child')
+            .before($('<div class="scoop"></div>'));
+    });
 
     // TODO change the "flavor" of a scoop in the cone when it is clicked
     // tell the parent div to listen, but only run if a .scoop child was clicked
-
+    $('[data-type="cone"]').on('click', '.scoop', function () {
+        $(this).toggleClass('mint');
+    });
 };
 
 iceCreamView.handleCup = function () {
+    console.log('handle cup runs!');
+
     // TODO when the cup is clicked, give it another scoop!
+    $('#cup').on('click', function () {
+        const $newScoop = $('<div class="scoop"></div>');
+        $('[data-type="cup"] .scoop:first-child').before($newScoop);
+    });
 
     // TODO when a scoop in the cup is clicked, change it to mint!
-
+    $('[data-type="cup"] .scoop').on('click', function () {
+        // event.target
+        $(this).toggleClass('mint');
+    });
 
 };
 
 iceCreamView.handleSurprise = function () {
     // TODO when the button is clicked, randomly color every scoop
-
+    $('#ice-cream button').on('click', function () {
+        $('.scoop').each(function () {
+            $(this).css('background-color', randomColor());
+        });
+    });
 
     // helper function
     function randomColor () {
@@ -146,3 +179,5 @@ iceCreamView.handleSurprise = function () {
         return colors[ Math.floor( Math.random() * colors.length ) ];
     }
 };
+
+iceCreamView.init();
