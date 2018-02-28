@@ -2,18 +2,25 @@
 
 //                                                USING TEMPLATE LITERALS
 
-`this is a template literal!!!`;
+const excited = '!!!!!!!';
+const oldWay = 'We used the + sign to concat strings and variables' + excited;
+// We used the + sign to concat strings and variables!!!!!!!
+const newWay = `We use backticks instead of quotes${excited}, plus the dollar sign and curly braces${excited}`;
+// We use backticks instead of quotes!!!!!!!, plus the dollar sign and curly braces!!!!!!!
 
-function greet () {
-    const name = prompt('What is your name?');
-    // const favDessert = prompt('Hi ' + name + ', what is your favorite dessert?');
-    const favDessert = prompt(`Hi ${name}, what is your favorite dessert?`);
 
-    // alert( favDessert.toUpperCase() + '????? GROSS. Here ' + name + '. Have some cake and ice cream instead.');
-    alert(`${favDessert.toUpperCase()}????? GROSS. Here ${1 + 2}, have some cake and ice cream instead.`);
-}
+//                                                USING ARROW FUN
+let dog = {
+    name: 'steve',
+    rename: function (newName) {
+        this.name = newName;
+    },
+    changeName: (newName) => {
+        this.name = newName;
+    }
+};
 
-// greet();
+dog.changeName('boop');  // won't change dog.name
 
 
 
@@ -21,33 +28,25 @@ function greet () {
 //                                                CREATING TABS WITH JQUERY
 
 // TODO replace these event listeners with jQuery event listeners
-// const cakeTab = document.querySelector('[data-tab="cake"]');
-// cakeTab.addEventListener('click', changeTabs);
+const cakeTab = document.querySelector('[data-tab="cake"]');
+cakeTab.addEventListener('click', changeTabs);
 
-// const iceCreamTab = document.querySelector('[data-tab="ice-cream"]');
-// iceCreamTab.addEventListener('click', changeTabs);
+const iceCreamTab = document.querySelector('[data-tab="ice-cream"]');
+iceCreamTab.addEventListener('click', changeTabs);
 
 $('a[data-tab]').click(changeTabs);
 
 function changeTabs () {
     // get the data-tab attribute of the link that was clicked
     // TODO use jQuery to get the data-tab value instead of getAttribute
-    // const clickedTabData = event.target.getAttribute('data-tab');
-    // const clickedTabData = $(event.target).attr('data-tab');
-    const clickedTabData = $(this).attr('data-tab');
-    console.log( `${clickedTabData} was clicked!` );
+    const clickedTabData = event.target.getAttribute('data-tab');
 
     // TODO hide all sections and reveal the appropriate section 
     // (note: the sections have ids to match the data-tab values)
-    $('.tab-content').hide();
-    $(`section#${clickedTabData}`).show();
+
 }
 
 // TODO simulate a click on the cake section so its open
-// $('.tab-content').hide();
-$('[data-tab="ice-cream"]').click();
-
-
 
 
 
@@ -80,9 +79,6 @@ cakeView.handleIcing = function () {
 cakeView.handleFlavor = function () {
     const $cakeLayers = $('#actual-cake div');
     $('input[name="flavor"]').change( function () {
-        console.log('this is the element listening for the event:', this);
-        console.log('$(this) is that same element as a jQuery object!:', $(this));
-    
         $cakeLayers.css('background-color', $(this).val());
     });
 };
@@ -106,6 +102,7 @@ cakeView.handleNewIcing = function () {
     });
 };
 
+cakeView.init();
 
 
 
@@ -124,35 +121,23 @@ iceCreamView.init = function () {
 
 iceCreamView.handleCone = function () {
     // TODO add new scoops to the cone when the cone is clicked
-    $('#cone').on('click', function () {
-        $(this).before($('.scoop.template').clone().removeClass('template'));
-    });
 
     // TODO change the "flavor" of a scoop in the cone when it is clicked
     // tell the parent div to listen, but only run if a .scoop child was clicked
-    $('div[data-type="cone"]').on('click', '.scoop', function () {
-        const $clickedScoop = $(event.target);
-        $clickedScoop.toggleClass('mint');
-    });
+
 };
 
 iceCreamView.handleCup = function () {
-    // when the cup is clicked, give it another scoop!
-    // TODO switch to using jQuery's on method
-    $('#cup').on('click', function () {
-        const $newScoop = $('.scoop.template').clone().removeClass('template');
-        $(this).before($newScoop);
-    });
+    // TODO when the cup is clicked, give it another scoop!
 
     // TODO when a scoop in the cup is clicked, change it to mint!
-    // attaches click listener to existing scoops, but not new ones, because it only runs once and only finds the .scoop(s) at that moment
-    $('div[data-type="cup"] .scoop').on('click', function () {
-        $(this).toggleClass('mint');
-    });
+
+
 };
 
 iceCreamView.handleSurprise = function () {
     // TODO when the button is clicked, randomly color every scoop
+
 
     // helper function
     function randomColor () {
@@ -161,16 +146,3 @@ iceCreamView.handleSurprise = function () {
         return colors[ Math.floor( Math.random() * colors.length ) ];
     }
 };
-
-
-// TODO call the functions below when the DOM is ready
-// greet();
-
-console.log('NOOOOOOOOOOOOOOPE DOM IS NOT READY!');
-
-
-$(document).ready(function () {
-    console.log('DOM IS READY!');
-    iceCreamView.init();
-    cakeView.init();
-});

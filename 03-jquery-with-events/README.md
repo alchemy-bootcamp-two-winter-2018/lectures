@@ -30,6 +30,7 @@
             * While you are pairing, the number one thing to keep in mind is “Is my pair engaged?” or “Am I engaged with my pair?”
             * Don’t just zone out and especially don’t start checking your email or something. If anything, go for a 5 minute walk to reset. You’ll be damaging the process itself if you feign attention.
             * Ask a lot of questions about the code “hmm, so what would the value of this variable be here?”, “We’re sure this is returning a boolean, right?” 
+        * [Communication Styles](http://keeleyhammond.com/communication-styles/)
 
 <hr></hr>
 
