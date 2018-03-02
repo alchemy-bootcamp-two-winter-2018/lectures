@@ -18,7 +18,7 @@ const person = new Person('joey');
 console.log(person.makeToyList());
 
 // const person2 = {
-//   name: 'stranger'
+//   name: 'stranger',
 // };
 
 // const said = person.sayHello.call({ name: 'sally '});

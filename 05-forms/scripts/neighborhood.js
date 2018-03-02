@@ -18,6 +18,8 @@ Neighborhood.prototype.toHtml = function() {
 };
 
 // Transform our rawData into an array of neighborhood objects:
+// const neighborhoods = neighborhoodDataSet.map(data => new Neighborhood(data));
+
 const neighborhoods = [];
 neighborhoodDataSet.forEach(neighborhoodData => {
   // created a Neighborhood component for each neighborhood data

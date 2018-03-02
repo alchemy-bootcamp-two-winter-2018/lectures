@@ -24,23 +24,37 @@
       <section>
         <h1>New Neighborhood</h1>
       </section>
-      <nav class="main-nav">
-          <div class="icon-menu"></div>
-          <ul>
-            <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
-            <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
-          </ul>
-        </nav>
+      <!-- <nav class="main-nav">
+        <div class="icon-menu"></div>
+        <ul>
+          <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
+          <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
+        </ul>
+      </nav> -->
     </header>
 
-    <main class="clearfix">
+    <main>
         <section id="write" class="tab-content">
           <h1>New Article</h1>
-          <!-- REVIEW: Set up a form to accept user input for a new blog article: -->
           <form action="#" id="new-form">
             <label>
               Name:
               <input type="text" id="neighborhood-name" placeholder="Name" required>
+            </label>
+
+            <label>
+              City:
+              <input type="text" id="neighborhood-city" placeholder="City" required>
+            </label>
+
+            <label>
+              Population:
+              <input type="text" id="neighborhood-population" placeholder="Population" required>
+            </label>
+
+            <label>
+              Founded:
+              <input type="text" id="neighborhood-founded" placeholder="Founded" required>
             </label>
 
             <label>
@@ -71,7 +85,7 @@
     <script src="scripts/neighborhood.js"></script>
     <script src="scripts/neighborhoodView.js"></script>
     <script>
-      // neighborhoodView.initNew();
+      neighborhoodView.initNew();
     </script>
   </body>
 </html>
