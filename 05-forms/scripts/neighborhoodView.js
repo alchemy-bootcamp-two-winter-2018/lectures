@@ -48,6 +48,8 @@ neighborhoodView.loadNeighborhoods = function() {
   neighborhoods.forEach(neighborhood => {
     section.append(neighborhood.toHtml());
   });
+
+  this.highlightCode();
 };
 
 neighborhoodView.initIndex = function() {
