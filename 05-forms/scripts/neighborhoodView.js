@@ -18,6 +18,9 @@ neighborhoodView.preview = function() {
     body: $('#neighborhood-body').val()
   };
 
+  // put the JSON of the data into the export
+  $('#neighborhood-json').val(JSON.stringify(data));
+
   // make a new Neighborhood(data)
   const neighborhood = new Neighborhood(data);
 
@@ -26,9 +29,6 @@ neighborhoodView.preview = function() {
 
   // replace html of the preview
   $('#preview').html(html);
-
-  // put the JSON of the data into the export
-  $('#neighborhood-json').val(JSON.stringify(data));
 };
 
 neighborhoodView.loadNeighborhoods = function() {
