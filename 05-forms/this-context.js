@@ -1,15 +1,21 @@
-'use strict';
+// 'use strict';
 
-const person = {
-  name: 'fred',
-  //sayHello: function() {
-  sayHello() {
-    return `Hi, I am ${this ? this.name : 'no context :('}`;
-  }
+function Person(name) {
+  this.name = name;
+  this.toys = ['ball', 'doll', 'flower'];
+}
+
+Person.prototype.makeToyList = function() {
+  const listItems = [];
+  this.toys.forEach(toy => {
+    listItems.push(`<li>${this.name} has a ${toy} toy</li>`);
+  });
+  return listItems.join('');
 };
 
+const person = new Person('joey');
 
-console.log('person.sayHello()', person.sayHello());
+console.log(person.makeToyList());
 
 // const person2 = {
 //   name: 'stranger'
