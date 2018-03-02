@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Seattle Neighborhood Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+    <template id="neighborhood-template">
+      <div>
+        <h2>{{name}}</h2>
+        <p>Part of: {{city}}</p>
+        <p>Founded on: {{founded}}</p>
+        <p>Current population: 
+          <strong>{{formattedPopulation}}</strong> 
+          (a <em>{{size}}</em> city)</p>
+        {{{body}}}
+      </div>
+    </template>
+
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>New Neighborhood</h1>
+      </section>
+      <nav class="main-nav">
+          <div class="icon-menu"></div>
+          <ul>
+            <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
+            <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <main class="clearfix">
+        <section id="write" class="tab-content">
+          <h1>New Article</h1>
+          <!-- REVIEW: Set up a form to accept user input for a new blog article: -->
+          <form action="#" id="new-form">
+            <label>
+              Name:
+              <input type="text" id="neighborhood-name" placeholder="Name" required>
+            </label>
+
+            <label>
+              Description:
+              <textarea id="neighborhood-body" rows="8" cols="40" required></textarea>
+            </label>
+            
+          </form>
+        </section>
+        <section id="articles" class="tab-content">
+  
+        </section>
+        <section id="neighborhood-export">
+          <label id="export-field" for="neighborhood-json" class="pull-right">
+            <input type="text" readonly id="neighborhood-json">
+            When finalized, copy the above JSON, and paste into blogArticles.js
+          </label>
+        </section>
+      </main>
+
+    <footer>
+      <span>&copy; 2017 Fake Data Limited</span>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="scripts/dataSet.js"></script>
+    <script src="scripts/neighborhood.js"></script>
+    <script src="scripts/neighborhoodView.js"></script>
+    <script>
+      // neighborhoodView.initNew();
+    </script>
+  </body>
+</html>
