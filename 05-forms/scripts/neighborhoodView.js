@@ -24,8 +24,11 @@ neighborhoodView.preview = function() {
   // get html via .toHtml
   const html = neighborhood.toHtml();
 
-  // append to preview
+  // replace html of the preview
   $('#preview').html(html);
+
+  // put the JSON of the data into the export
+  $('#neighborhood-json').val(JSON.stringify(data));
 };
 
 neighborhoodView.loadNeighborhoods = function() {
