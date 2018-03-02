@@ -20,10 +20,12 @@ neighborhoodView.preview = function() {
 
   // make a new Neighborhood(data)
   const neighborhood = new Neighborhood(data);
-  console.log('got to preview!', neighborhood.toHtml());
+
   // get html via .toHtml
+  const html = neighborhood.toHtml();
 
   // append to preview
+  $('#preview').html(html);
 };
 
 neighborhoodView.loadNeighborhoods = function() {
