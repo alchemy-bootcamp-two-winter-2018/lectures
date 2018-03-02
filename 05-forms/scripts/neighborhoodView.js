@@ -18,8 +18,9 @@ neighborhoodView.preview = function() {
     body: $('#neighborhood-body').val()
   };
 
-  // put the JSON of the data into the export
-  $('#neighborhood-json').val(JSON.stringify(data));
+  // put the JSON of the data into the export, and make sure visible
+  $('#neighborhood-export').show();
+  $('#neighborhood-json').val(JSON.stringify(data, true, 2));
 
   // make a new Neighborhood(data)
   const neighborhood = new Neighborhood(data);

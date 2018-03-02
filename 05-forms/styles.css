@@ -53,3 +53,7 @@ label, input, textarea {
   margin-bottom: 10px;
   padding-top: 10px;
 }
+
+#neighborhood-export {
+  display: none;
+}
