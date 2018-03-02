@@ -11,7 +11,11 @@ neighborhoodView.formChange = function() {
 neighborhoodView.preview = function() {
   // gather up the data
   const data = {
-    name: $('#neighborhood-name').val()
+    name: $('#neighborhood-name').val(),
+    city: $('#neighborhood-city').val(),
+    population: $('#neighborhood-population').val(),
+    founded: $('#neighborhood-founded').val(),
+    body: $('#neighborhood-body').val()
   };
 
   console.log('got to preview!', data);
