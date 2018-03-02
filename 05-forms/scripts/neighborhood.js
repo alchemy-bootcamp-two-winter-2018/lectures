@@ -12,7 +12,7 @@ function Neighborhood(data) {
   // calculated "derived" data:
   this.size = this.population > 20000 ? 'big' : 'small';
   this.formattedPopulation = this.population.toLocaleString();
-  this.htmlBody = this.body; // convert this.body to markdown
+  this.htmlBody = marked(this.body); // convert this.body to markdown
 }
 
 // return the html for "this" neighborhood

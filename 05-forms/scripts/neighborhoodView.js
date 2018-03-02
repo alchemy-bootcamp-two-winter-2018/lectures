@@ -8,6 +8,12 @@ neighborhoodView.formChange = function() {
   form.on('change', 'input,textarea', () => this.preview());
 };
 
+neighborhoodView.highlightCode = function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+};
+
 neighborhoodView.preview = function() {
   // gather up the data
   const data = {
@@ -30,6 +36,9 @@ neighborhoodView.preview = function() {
 
   // replace html of the preview
   $('#preview').html(html);
+
+  // rerun the code highlighting
+  this.highlightCode();
 };
 
 neighborhoodView.loadNeighborhoods = function() {
