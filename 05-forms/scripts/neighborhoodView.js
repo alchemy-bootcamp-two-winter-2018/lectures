@@ -1,4 +1,4 @@
-/* global neighborhoods */
+/* global neighborhoods, Neighborhood */
 'use strict';
 
 const neighborhoodView = {};
@@ -18,9 +18,9 @@ neighborhoodView.preview = function() {
     body: $('#neighborhood-body').val()
   };
 
-  console.log('got to preview!', data);
   // make a new Neighborhood(data)
-
+  const neighborhood = new Neighborhood(data);
+  console.log('got to preview!', neighborhood.toHtml());
   // get html via .toHtml
 
   // append to preview
