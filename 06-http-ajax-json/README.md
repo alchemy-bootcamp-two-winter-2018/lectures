@@ -1,41 +1,61 @@
-Class 6: HTTP, AJAX & JSON
-=======
-## Overview
+## **Module 1: The View**
+# Class 5: Form Building
 
-Here we go! Onwards, into Week 2 and distributing our application. Which means...
+[Schedule](#schedule) | [Announcements](#announcements) </br>
+[Objectives](#learning-objectives) | [Yesterday vs Today](#yesterday-vs-today) </br>
+[Lecture Notes](#notes) | [Readings](#readings)
 
-Asynchronous connections... and standardized data formats? This all sounds like a serious upgrade to our application logic! Let's see what you can do with the blog app and your portfolios once we apply these concepts!*
+<hr></hr>
 
-## Asynchronicity
+## Schedule
+1. Objectives
+1. Code Review
+1. Typography
+1. Form Building
 
-*This week, you will construct a model layer in your application that accesses and transforms persisted data, conforming to common WRRC, FP, and CRUD conventions.*
+### Announcements
+* Note: the Kilovolt labs will have a complete README. For the next new set of labs (a To Do app), you will write your own.
+* **Today is your last day to *NOT* use live-server! Starting tomorrow your app will not work if you don't use live-server.
+* **Today is also your last day working *entirely* in the front-end.**
+* Questions?
 
-*Starting with an introduction to the WRRC (web request response cycle), we will learn how HTTP works and how to accomplish simple GET requests through the use of AJAX and jQuery.*
-
-## Readings
-* JS & jQ, Ch 8: pp.367-408 (Context: 384-387; Essential: 367-383, 388-399; Reference:400-408)
-* [MDN localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API) (Essential)
-
-## Daily Plan
-- Code Review
-- New Material
-- Code Demos
-- Lab Preview
+<hr></hr>
 
 ## Learning Objectives
+* Review concepts and lessons from the week.
+* Use a form and jquery to solicit data
+* Build a JSON string using data given by a user. 
+* Integrate 3rd party libraries for dynamic code highlighting and markdown.
 
-* Identify when apps need persistence, to improve the UX and isolate the model logic in the code base.
-* Explain how the browser uses the request-response (WRRC) cycle to render an HTML file or AJAX call.
-* Analyze the localStorage object
+### Yesterday vs Today
+| Yesterday we... | Today we will... |
+| --------------- | ---------------- |
+| Used vanilla JavaScript to handle data from forms. | Use jQuery to handle data from forms. |
 
-## Useful Resources
+<hr></hr>
 
-- [Pokéapi!](https://pokeapi.co/)
-- [Star Wars API!](http://swapi.co/)
+## Notes
+* Typography
+    * Why typography matters
+        * Typography : Websites :: Audio : Movies
+    * Key terms 
+        * Serif vs Sans Serif
+        * Baseline, x-height, cap height, ascender, descender
+    * [Web font formats](https://creativemarket.com/blog/the-missing-guide-to-font-formats)
+    * Font sizes and using a font-scale
 
-- Key terms
-	- [WRRC](http://celineotter.azurewebsites.net/world-wide-web-http-request-response-cycle/) (Web Request Response Cycle)
-	- [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator) vs. [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) (Uniform Resource Locator vs. Uniform Resource Identifier)
-	- [IP address](https://en.wikipedia.org/wiki/IP_address)
-	- [DNS](https://en.wikipedia.org/wiki/Domain_Name_System) (Domain Name System)
-	- REQ/RES (Request/Response)
+* Deep Dive: Kilovolt blog
+    * Goal: practice reading code and understanding 1) what happens when it runs 2) its goal or purpose in life
+    * Take 2 minutes, decide what specific part you want to do a deep dive into. What method(s) can you not answer the above questions about?
+    * If people have questions about the same areas, group together and work through them.
+
+* Form building workshop
+    * Let's build out the HTML form you'll be writing the JavaScript for during your lab.
+    * JSON???
+        * What is it, and why do we use it?
+
+## Readings
+None for today!
+
+## Lab
+[Lab 5: Form-Building Workshop](https://github.com/acl-301d-fall-2017/05-form-building)

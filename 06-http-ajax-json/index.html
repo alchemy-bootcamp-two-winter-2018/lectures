@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Seattle Neighborhood Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+
+    <template id="neighborhood-template">
+      <div>
+        <h2>{{name}}</h2>
+        <p>Part of: {{city}}</p>
+        <p>Founded on: {{founded}}</p>
+        <p class="js-population">Current population: 
+          <strong>{{formattedPopulation}}</strong> 
+          <span class="js-size">(a <em>{{size}}</em> city)</span>
+        </p>
+        {{{htmlBody}}}
+      </div>
+    </template>
+
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>Neighborhood Stats</h1>
+      </section>
+      <nav>
+        <ul>
+          <li><a href="/new.html">Add a new neighborhood</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="neighborhoods"></section>
+    </main>
+
+    <footer>
+      <span>&copy; 2017 Fake Data Limited</span>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="scripts/neighborhood.js"></script>
+    <script src="scripts/neighborhoodView.js"></script>
+    <script>
+      neighborhoodView.initIndex();
+    </script>
+  </body>
+</html>
