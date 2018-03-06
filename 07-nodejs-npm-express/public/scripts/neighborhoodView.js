@@ -6,7 +6,10 @@ const neighborhoodView = {};
 neighborhoodView.formChange = function() {
   const form = $('#new-form');
   form.on('change', 'input,textarea', () => this.preview());
-  form.on('submit', () => this.save());
+  form.on('submit', event => {
+    event.preventDefault();
+    this.save();
+  });
 };
 
 neighborhoodView.highlightCode = function() {
