@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Portland Neighborhood Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+    href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    
+    <template id="neighborhood-template">
+      <div>
+        <h2>{{name}}</h2>
+        <p>Part of: {{city}}</p>
+        <p>Founded on: {{founded}}</p>
+        <p>Current population: 
+          <strong>{{formattedPopulation}}</strong> 
+          (a <em>{{size}}</em> city)</p>
+        {{{htmlBody}}}
+      </div>
+    </template>
+
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>New Neighborhood</h1>
+      </section>
+      <!-- <nav class="main-nav">
+        <div class="icon-menu"></div>
+        <ul>
+          <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
+          <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
+        </ul>
+      </nav> -->
+    </header>
+
+    <main>
+        <section id="write" class="tab-content">
+          <h1>New Article</h1>
+          <form action="#" id="new-form">
+            <label>
+              Name:
+              <input type="text" id="neighborhood-name" placeholder="Name" required>
+            </label>
+
+            <label>
+              City:
+              <input type="text" id="neighborhood-city" placeholder="City" required>
+            </label>
+
+            <label>
+              Population:
+              <input type="text" id="neighborhood-population" placeholder="Population" required>
+            </label>
+
+            <label>
+              Founded:
+              <input type="text" id="neighborhood-founded" placeholder="Founded" required>
+            </label>
+
+            <label>
+              Description:
+              <textarea id="neighborhood-body" rows="8" cols="40" required></textarea>
+            </label>
+            
+            <label>
+              <button type="submit">Add</button>
+            </label>
+          </form>
+        </section>
+        <section id="preview" class="tab-content">
+  
+        </section>
+        <section id="neighborhood-export">
+          <label id="export-field" for="neighborhood-json" class="pull-right">
+            When finalized, copy the above JSON, and paste into dataSet.js
+            <textarea readonly id="neighborhood-json" rows="20" cols="40" ></textarea>
+          </label>
+        </section>
+      </main>
+
+    <footer>
+      <span>&copy; 2017 Fake Data Limited</span>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="scripts/neighborhood.js"></script>
+    <script src="scripts/neighborhoodView.js"></script>
+    <script>
+      neighborhoodView.initNew();
+    </script>
+  </body>
+</html>
