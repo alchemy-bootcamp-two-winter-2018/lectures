@@ -3,13 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>pg demo</title>
+    <style>
+      label { display: block; }
+    </style>
   </head>
   <body>
     <main>
       <form id="user-form">
-        <input id="name" type="text" placeholder="name (i.e Matsu)">
-        <input id="age" type="text" placeholder="age (i.e. 34)">
-        <input id="ninja" type="text" placeholder="ninja (i.e. false)">
+        <label>
+          Name: <input id="name" type="text" placeholder="name (i.e Hattori Hanzo)">
+        </label>
+        <label>
+          Age: <input id="age" type="text" placeholder="age (i.e. 34)">
+        </label>
+        <label>
+          <input id="ninja" type="checkbox" placeholder="ninja (i.e. false)">
+          Ninja?
+        </label>
         <button type="submit">ship it</button>
       </form>
       <section id="results"></section>

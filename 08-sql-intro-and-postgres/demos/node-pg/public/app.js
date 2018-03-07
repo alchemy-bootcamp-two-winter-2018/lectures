@@ -2,8 +2,9 @@
 
 pageLoad();
 
-$('#user-form').on('submit', function(e) {
+$('#user-form').on('submit', e => {
     e.preventDefault();
+
     const data = {
         name: e.target.name.value,
         age: e.target.age.value,
@@ -11,7 +12,7 @@ $('#user-form').on('submit', function(e) {
     };
 
     $.post('/db/person', data)
-        .then(function() {
+        .then(() => {
             pageLoad();
         });
 
