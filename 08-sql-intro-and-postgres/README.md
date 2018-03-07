@@ -1,31 +1,3 @@
-<!-- 
-
-- what a model?
-
-- set up PSQL
-    - be able to either 1) open psql or 2) run psql in terminal
-      - and 3) see list of databases \l (specifically kilovolt)
-
-
-- callbacks
-- chaining methods: .then()
-- FIND THE FUNCTIONS - how many in this block of code are we defining? how many are we calling?
-
-
-- CRUD
-- full stack diagram
-- HOW to connect from server to database
-    - how did we connect from client to server?
-
-
-- feedback from Emily!!!
-    - Y'ALL ACTUALLY READ YOUR ERROR MESSAGES BEFORE DECIDING IF THEYRE RELEVANT
-    - something about not knowing? 
-
-- feedback from class
-
--->
-
 ## **Module 2: The Model**
 # Class 8: SQL & Postgres
 
@@ -43,22 +15,6 @@
 1. Lab Prep
 
 ### Announcements
-* One on ones! Today and tmrw: how's life?
-* **Tardies affect your attendance!** Leaving early affects your brownie points.
-* **FEEDBACK!**
-    * 💖
-        * Quick draw code review
-        * Deep dive code review
-    * To improve:
-        * Stretch goals in code instead of README
-        * Little to no monitors/spacing available during awkward after lunch period (when 401's aren't in lecture yet).
-* **FEEDBACK FROM EMILY**
-    * PRACTICE, PRACTICE, PRACTICE explaining what code is doing.
-        * On our part: create an environment where you feel comfortable 1) readily admiting you don't know but also 2) attempting to express what you do know - not matter the holes
-        * On your part: sounding like a fool now so you don't later. I promise we don't think negatively of you when you're trying. 
-    * Students need to work on problem solving process.
-        * Use the scientific method: ask a question, observe/research, hypothesize, experiment (test your hypothesis), analyze outcome. (Repeat as neccessary!)
-        * Emily's article: [4 steps to soliving any software problem](https://www.oreilly.com/ideas/4-steps-to-solving-any-software-problem)
 * Questions?
 
 <hr></hr>
