@@ -8,7 +8,7 @@ $('#user-form').on('submit', e => {
     const data = {
         name: e.target.name.value,
         age: e.target.age.value,
-        ninja: e.target.ninja.value
+        ninja: e.target.ninja.value,
     };
 
     $.post('/db/person', data)

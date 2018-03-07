@@ -3,30 +3,54 @@
 // Add pg module
 const pg = require('pg');
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Windows and Linux users: You should have retained the user/password from the pre-work for this course.
+// Your OS may require that your conString is composed of additional information including user and password.
+// const conString = 'postgres://USER:PASSWORD@HOST:PORT/DBNAME';
+
+// Mac:
+const conString = 'postgres://localhost:5432/demo';
+
 // Set up the client connection to the DB
-// 'postgres://localhost:5432/demos'
+// 'postgres://localhost:5432/demo'
 // 'postgres://localhost:5432/kilovolt'
 
-const client = new pg.Client('postgres://postgres:1234@localhost:5432/demos');
+const client = new pg.Client(conString);
 client.connect();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
-// Base route for serving up HTML
-app.get('/', function(request, response) {
-    response.sendFile('./public/index.html');
+// DB routes for CRUD operations
+app.get('/db/person', (request, response) => {
+    client.query('SELECT * FROM ninjas;')
+        .then((data) => {
+            response.send(data);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 });
 
-// DB routes for CRUD operations
-app.get('/db/person', function(request, response) {
-    client.query('SELECT * FROM persons;')
-        .then(function(data) {
+app.post('/db/person', (request, response) => {
+    const body = request.body;
+
+    client.query(`
+        INSERT INTO ninjas(name, age, ninja)
+        VALUES($1, $2, $3);
+    `,
+    [
+        body.name,
+        body.age,
+        body.ninja,
+    ]
+    )
+        .then(data => {
+            console.log(data);
+            // response.redirect('/');
             response.send(data);
         })
         .catch(function(err) {
@@ -34,36 +58,17 @@ app.get('/db/person', function(request, response) {
         });
 });
 
-app.post('/db/person', function(request, response) {
-    client.query(`
-        INSERT INTO persons(name, age, ninja)
-        VALUES($1, $2, $3);
-    `,
-    [
-        request.body.name,
-        request.body.age,
-        request.body.ninja,
-    ]
-    )
-        .then(function(data) {
-            response.redirect('/');
-        })
-        .catch(function(err) {
-            console.error(err);
-        });
+
+app.listen(PORT, () => {
+    console.log(`Listening on port: ${PORT}`);
 });
 
 createTable();
 
-app.listen(PORT, function() {
-    console.log(`Listening on port: ${PORT}`);
-});
-
-
 ////// Create database table helper function //////
 function createTable() {
     client.query(`
-    CREATE TABLE IF NOT EXISTS persons(
+    CREATE TABLE IF NOT EXISTS ninjas(
       id SERIAL PRIMARY KEY,
       name VARCHAR(256),
       age INTEGER,
@@ -71,6 +76,6 @@ function createTable() {
     );`
     )
         .then(function(response) {
-            console.log(response);
+            console.log('CREATE TABLE', response);
         });
 }
