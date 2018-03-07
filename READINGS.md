@@ -44,11 +44,11 @@ Not a reading, but useful: [JSONLint](http://jsonlint.com/) is your friend when 
 ### Day 8
 
 * [SQLBolt (Intro, Lessons 1-4, 13-18)](http://sqlbolt.com/)
-* [A Primer on SQL](https://leanpub.com/aprimeronsql/read) (Reference)
+* [A Primer on SQL](https://openlibra.com/en/book/a-primer-on-sql-3rd-edition) (Reference)
 
 ### Day 9
 * [SQLBolt (Lessons 6-7) (Essential)](http://sqlbolt.com/lesson/select_queries_with_joins)
-* [A Primer on SQL (Chapter 11) (Reference)](https://leanpub.com/aprimeronsql/read#leanpub-auto-understanding-joins)
+* [A Primer on SQL (Chapter 11) (Reference)](https://openlibra.com/en/book/a-primer-on-sql-3rd-edition)
 * [Visual Guide to SQL Joins](http://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins)
 
 ### Day 10
