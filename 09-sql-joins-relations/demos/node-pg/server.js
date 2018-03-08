@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 // process.env.PORT will be used during production
 
-const client = new pg.Client('postgres://postgres:1234@localhost:5432/demos');
+const client = new pg.Client('postgres://localhost:5432/tasks');
 client.connect();
 
 app.use(express.static('./public'));
@@ -19,6 +19,31 @@ app.get('/', function(request, response) {
     response.sendFile('./public/index.html');
 });
 
+function allTasksQuery() {
+    return client.query(`
+        SELECT tasks.id, content, 
+            users.id AS person_id, users.name AS person, 
+            categories.id AS category_id, categories.name AS category 
+        FROM tasks 
+        INNER JOIN users ON tasks.user_id = users.id 
+        INNER JOIN categories ON tasks.category_id = categories.id;
+    `);
+}
+
+function tasksByCategoryQuery(categoryId) {
+    return client.query(`
+        SELECT tasks.id, content, 
+            users.id AS person_id, users.name AS person, 
+            categories.id AS category_id, categories.name AS category 
+        FROM tasks 
+        INNER JOIN users ON tasks.user_id = users.id 
+        INNER JOIN categories ON tasks.category_id = categories.id
+        WHERE category_id = $1;
+    `,
+    [categoryId]
+    );
+}
+
 // routes for fetching data from DB 
 app.get('/tasks', function(request, response) {
     /*
@@ -26,12 +51,10 @@ app.get('/tasks', function(request, response) {
         FROM tasks, users, categories 
         WHERE tasks.user_id = users.user_id AND tasks.category_id = categories.category_id;
     */
-    client.query(`
-        SELECT content, users.name AS person, categories.name AS category 
-        FROM tasks 
-        INNER JOIN users ON tasks.user_id = users.user_id 
-        INNER JOIN categories ON tasks.category_id = categories.category_id;
-    `)
+    const categoryId = request.query.category_id;
+    const query = categoryId ? tasksByCategoryQuery(categoryId) : allTasksQuery();
+
+    query
         .then(function(data) {
             response.send(data.rows);
         })
@@ -40,43 +63,23 @@ app.get('/tasks', function(request, response) {
         });
 });
 
-app.get('/tasks/chores', function(request, response) {
-    client.query(`SELECT * FROM tasks WHERE category ='chores';`)
+app.get('/tasks/:id', (request, response) => {
+    client.query(
+        `SELECT * FROM tasks WHERE id = $1`,
+        [request.params.id]
+    )
         .then(function(data) {
-            response.send(data.rows);
+            if(data.rows.length === 0) response.sendStatus(404);
+            else response.send(data.rows[0]);
         })
         .catch(function(err) {
-            console.error(err);
+            const code = err.code === '22P02' ? 400 : 500;
+            response.status(code).send(err.message);
         });
-
-});
-
-app.get('/tasks/works', function(request, response) {
-    client.query(`SELECT * FROM tasks WHERE category ='work';`)
-        .then(function(data) {
-            response.send(data.rows);
-        })
-        .catch(function(err) {
-            console.error(err);
-        });
-
-});
-
-app.get('/tasks/:category', function(request, response) {
-    console.log(request.params);
-    // client.query(`SELECT * FROM tasks WHERE category ='${request.params.category}';`)
-    client.query(`SELECT * FROM tasks WHERE category =$1;`, [request.params.category])
-        .then(function(data) {
-            response.send(data.rows);
-        })
-        .catch(function(err) {
-            console.error(`request /tasks/:category ---- ${err}`);
-        });
-
 });
 
 app.get('/categories', function (request, response) {
-    client.query('SELECT category FROM tasks;')
+    client.query('SELECT * FROM categories;')
         .then(function (data) {
             response.send(data.rows);
         })
@@ -86,7 +89,7 @@ app.get('/categories', function (request, response) {
 });
 
 app.get('/users', function (request, response) {
-    client.query('SELECT person FROM tasks;')
+    client.query('SELECT * FROM users;')
         .then(function (data) {
             response.send(data.rows);
         })
@@ -95,12 +98,12 @@ app.get('/users', function (request, response) {
         });
 });
 
-// :username is a placeholder for whatever is input in the url
-// ie /users/mickey/tasks is stored in request.params like this: { username: 'mickey'}
-app.get('/users/:username/tasks', function(request, response) {
+// :userid is a placeholder for whatever is input in the url
+// ie /users/324/tasks is stored in request.params like this: { userId: 324}
+app.get('/users/:userId/tasks', function(request, response) {
     console.log(request.params.username);
     // $1 is the placeholder for the first item of the second parameter's array
-    client.query('SELECT * FROM tasks WHERE person = $1;', [request.params.username])
+    client.query('SELECT * FROM tasks WHERE user_id = $1;', [request.params.userId])
         .then(function(data) {
             response.send(data.rows);
         })
@@ -116,47 +119,11 @@ app.listen(PORT, function() {
     console.log(`Listening on port: ${PORT}`);
 });
 
-
-function loadUsers() {
-    fs.readFile('./public/data/tasks.json', function(err, fd) {
-        JSON.parse(fd.toString()).forEach(function(ele) {
-            client.query(
-                'INSERT INTO users(name) VALUES($1) ON CONFLICT DO NOTHING',
-                [ele.person]
-            );
-        });
-    });
-}
-
-function loadCategories() {
-    fs.readFile('./public/data/tasks.json', function(err, fd) {
-        JSON.parse(fd.toString()).forEach(function(ele) {
-            client.query(
-                'INSERT INTO categories(name) VALUES($1) ON CONFLICT DO NOTHING',
-                [ele.category]
-            );
-        });
-    });
-}
-
-function loadTasks() {
-    client.query('SELECT COUNT(*) FROM articles')
-        .then(result => {
-            if(!parseInt(result.rows[0].count)) {
-                fs.readFile('./public/data/tasks.json', function(err, fd) {
-                    JSON.parse(fd.toString()).forEach(function(ele) {
-                        // would query to add each task
-                    });
-                });
-            }
-        });
-}
-
 function loadDB() {
     client.query(`
         CREATE TABLE IF NOT EXISTS
         users (
-        user_id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         name VARCHAR(255) UNIQUE NOT NULL
         );`
     )
@@ -170,7 +137,7 @@ function loadDB() {
     client.query(`
         CREATE TABLE IF NOT EXISTS
         categories (
-        category_id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         name VARCHAR(255) UNIQUE NOT NULL
         );`
     )
@@ -183,10 +150,10 @@ function loadDB() {
 
     client.query(`
         CREATE TABLE IF NOT EXISTS tasks (
-        task_id SERIAL PRIMARY KEY,
+        id SERIAL PRIMARY KEY,
         content VARCHAR(255) NOT NULL,
-        user_id INTEGER REFERENCES users(user_id) NOT NULL,
-        category_id INTEGER REFERENCES categories(category_id)
+        user_id INTEGER REFERENCES users(id) NOT NULL,
+        category_id INTEGER REFERENCES categories(id)
     );`
     )
         .then(data => {

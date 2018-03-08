@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
+    "load:data": "node load-data.js"
   },
   "keywords": [],
   "author": "",

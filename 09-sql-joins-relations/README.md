@@ -5,7 +5,6 @@
 [Objectives](#learning-objectives) | [Yesterday vs Today](#yesterday-vs-today) </br>
 [Lecture Notes](#notes) | [Readings](#readings)
 
-
 <hr></hr>
 
 ## Schedule
@@ -13,9 +12,27 @@
 1. Code Review
 1. SQL Joins
 
-### Announcements
-* More one on ones!
-* Feedback from yesterday.
+### Feedback
+
+* Alchemy Courses
+    * Combined FullStack/Devsign? 10 + 2 + 2 = 14 weeks
+    * Next Bootcamp Enrollment
+    * Consultancy
+* Pairing
+    * More "How"
+    * **Must** use a timer
+    * Switch computers becuz git
+    * Roles
+        * Driver - "watch the road" === code care-taker
+        * Navigator - "read the map" === design, next step
+    * Skill levels
+        * Doesn't matter. You have a shared goal. Only team wins (or losses)
+        * Respect roles. Everyone needs practice.
+        * Stronger partner learns to mentor the other without taking over role
+        * Let people surprise you. You might not know everything yet :)
+        * Reality is that strong pairs can transcend the roles, its about developing
+        a shared purpose
+
 <hr></hr>
 
 ## Learning Objectives
