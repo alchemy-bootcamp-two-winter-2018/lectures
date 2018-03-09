@@ -26,6 +26,7 @@ app.use(express.static('public'));
 
 /* 5) Data API Routes */
 
+// Create
 app.post('/pets', (request, response) => {
     const body = request.body;
 
@@ -41,6 +42,58 @@ app.post('/pets', (request, response) => {
         .catch(console.error);
 });
 
+// Read
+app.get('/pets', (request, response) => {
+    client.query(
+        `SELECT 
+            pets.id, 
+            pets.name, 
+            category_id,
+            categories.name as category, 
+            description
+        FROM pets
+        JOIN categories
+        ON pets.category_id = categories.id;`
+    )
+        .then(result => {
+            response.send(result.rows);
+        })
+        .catch(console.error);
+});
+
+// Update
+app.put('/pets/:id', (request, response) => {
+    const body = request.body;
+    const id = request.params.id;
+
+    client.query(
+        `UPDATE pets
+        SET name=$1, category_id=$2, description=$3
+        WHERE id=$4
+        RETURNING id, name, category_id, description;
+        `,
+        [body.name, body.category_id, body.description, id]
+    )
+        .then(result => {
+            response.send(result.rows[0]);
+        })
+        .catch(console.error);
+});
+
+// DESTROY
+app.delete('/pets/:id', (request, response) => {
+    const id = request.params.id;
+
+    client.query(
+        `DELETE FROM pets
+        WHERE id=$1;`,
+        [id]
+    )
+        .then(() => {
+            response.send({ removed: true });
+        })
+        .catch(console.error);
+});
 
 /* 6) Start server */
 app.listen(PORT, () => {
