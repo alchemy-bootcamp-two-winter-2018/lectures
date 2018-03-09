@@ -7,6 +7,24 @@
     <title>Demo</title>
 </head>
 <body>
-    <p>Hello World</p>
+    <p>Hello Pets!</p>
+    <main>
+        <ul id="pets">
+
+        </ul>
+    </main>
+    <template id="pet-template">
+        <li>
+            <h3>{{name}} the {{category}}</h3>
+            <p>{{description}}</p>
+        </li>
+    </template>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="/scripts/pet.js"></script>
+    <script src="/scripts/petView.js"></script>
+    <script>
+      app.Pet.fetchAll(app.petView.initIndexPage);
+    </script>
 </body>
 </html>
