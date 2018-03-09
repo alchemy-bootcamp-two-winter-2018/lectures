@@ -14,4 +14,43 @@ const doctors = [
     { number: 11, actor: 'Matilda Smith', begin: 2010, end: 2013 },
     { number: 12, actor: 'Peter Capaldi', begin: 2013, end: 2013 }
 ];
+
+const doctorsLengthOfService = doctors.map(doctor => {
+    return {
+        name: doctor.actor,
+        years: doctor.end - doctor.begin
+    };
+});
+
+// console.log('length of service', doctorsLengthOfService);
+
+const doctorsGreatorThan10 = doctors.filter(doctor => {
+    return doctor.number > 10;
+});
+
+// console.log('greater than 10', doctorsGreatorThan10);
+
+const doctorsWithManyYearsOfService = doctors
+    .map(doctor => {
+        return {
+            name: doctor.actor,
+            years: doctor.end - doctor.begin
+        };
+    })
+    .filter(doctors => doctors.years > 3);
+
+console.log(doctorsWithManyYearsOfService);
+
+const totalOfNumber = doctors
+    .map(doctor => doctor.number)
+    .reduce((acc, number) => acc + number);
+
+console.log(totalOfNumber);
+
+const doctorsByNumber = doctors.reduce((acc, doctor) => {
+    acc[doctor.number] = doctor;
+    return acc;
+}, {});
+
+console.log(doctorsByNumber);
   
