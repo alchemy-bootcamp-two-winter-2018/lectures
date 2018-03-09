@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "watch": "nodemon server.js",
     "createdb": "node db/create-db.js",
     "loaddb": "node db/load-db.js",
     "droptables": "node db/drop-tables"
@@ -18,6 +19,7 @@
   },
   "description": "",
   "devDependencies": {
-    "eslint": "^4.18.2"
+    "eslint": "^4.18.2",
+    "nodemon": "^1.17.1"
   }
 }
