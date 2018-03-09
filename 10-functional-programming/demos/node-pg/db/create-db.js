@@ -1,6 +1,7 @@
 // we need require and initialize postgres client
 const pg = require('pg');
-const client = new pg.Client('postgres://localhost:5432/superpets');
+const DATABASE_URL = 'postgres://localhost:5432/superpets';
+const client = new pg.Client(DATABASE_URL);
 client.connect();
 
 client.query(`
@@ -17,7 +18,7 @@ client.query(`
   );
 `)
     .then(
-        () => console.log('load successful'),
+        () => console.log('create successful'),
         err => console.error(err)
     )
     .then(() => {

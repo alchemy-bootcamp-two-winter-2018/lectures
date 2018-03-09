@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "createdb": "node db/create-db.js",
+    "loaddb": "node db/load-db.js",
+    "droptables": "node db/drop-tables"
   },
   "keywords": [],
   "author": "Marty Nelson <marty@martypdx.com>",
