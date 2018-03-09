@@ -3,7 +3,7 @@
 /* 1) Environment Variables */
 
 
-/* 2) Required Dependecies */
+/* 2) Required Dependencies */
 
 
 /* 3) Create DB client and connect */
