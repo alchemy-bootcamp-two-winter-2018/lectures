@@ -14,7 +14,13 @@ Class 11: Production & Deployment
     1. Deploy Back End to Heroku
     1. Deploy Front End to Gh-Pages
 
-## Announcements
+## Announcements/Feedback
+- Career Track Requirements
+    - Grade 90% or above
+    - 70% or above on exam (we will discuss on Wednesday)
+    - Instructor Recommendation
+- Labs and Instructor Better Prepared
+- Project Week
 - ?
 
 ## Learning Objectives
@@ -35,15 +41,7 @@ Environments
     * (Note: adds the heroku app url to your git repo as a remote repo)
     * Deploy! `git push heroku master`
     * [Adding a database](https://devcenter.heroku.com/articles/heroku-postgresql)
-        1. create a database using the postgresql addon
-        1. check your configs to see the database url
-        1. restart your heroku instance
-
-        ```
-        $ heroku addons:create heroku-postgresql:hobby-dev
-        $ heroku config
-        $ heroku ps:restart
-        ```
+    * See [SERVER.md](SERVER.md)
 
 * [More Heroku info](heroku.md)
 
