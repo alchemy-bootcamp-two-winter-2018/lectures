@@ -275,7 +275,7 @@ DATABASE_URL=postgres://localhost:5432/todo
 ##### Restart Heroku
 
 ```sh
-> heroku pg:restart
+> heroku ps:restart
 ```
 
 ### Pushing Changes
