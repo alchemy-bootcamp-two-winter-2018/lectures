@@ -18,9 +18,7 @@ client.query(`
   );
 `)
     .then(
-        () => console.log('create successful'),
+        () => console.log('db task successful'),
         err => console.error(err)
     )
-    .then(() => {
-        client.end();
-    });
+    .then(() => client.end());
