@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>PageJS Demo</title>
+</head>
+<body>
+    <header>
+        <h1>PageJS Demo</h1>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/about">about</a></li>
+                <li><a href="/stuff">stuff</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main>
+        <section id="home-view" class="view">
+            <h2>Home View</h2>
+        </section>
+        
+        <section id="about-view" class="view">
+            <h2>About View</h2>
+        </section>
+        
+        <section id="stuff-view" class="view">
+            <h2>Stuff View</h2>
+        </section>
+        
+        <section id="stuff-detail-view" class="view">
+            <h2>Stuff View</h2>
+            <p id="stuff-id"></p>
+        </section>
+    </main>
+
+    <!-- Third-Party -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/page.js/1.8.4/page.min.js"></script>
+   
+    <!-- app scripts -->
+    <script>
+        window.module = {};
+    </script>
+    <script src="scripts/views/home-view.js"></script>
+    <script src="scripts/views/about-view.js"></script>
+    <script src="scripts/views/stuff-view.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

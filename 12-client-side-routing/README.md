@@ -1,67 +1,54 @@
-Client
-===
+# Class 12: Single Page Applications & Client-Side Routing
 
-## Manage Environment and Config
+[Schedule](#schedule) | [Announcements](#announcements) </br>
+[Objectives](#learning-objectives) | [Yesterday vs Today](#yesterday-vs-today) </br>
+[Lecture Notes](#notes) | [Readings](#readings)
 
-* Test if production using `window.location.protocol === 'https:'`; 
+<hr></hr>
 
-* Create a top level script that sets variable based on dev/prod:
-    * `API_URL`
-    * `ROUTER_OPTIONS` 
+## Schedule
+1. Objectives
+1. Code Review
+1. Client side routing
+1. Lab Prep
 
-* Initialize module here. Because we are going to call our main page `app.js`,
-let's change the name to `window.module`. Each view file needs to be updated to pass
-in this variable to iife: 
+### Announcements
+* Quiz review?
 
-```js
-(function(module){
-    /*...*/
-})(window.module);
-```
+<hr></hr>
 
-## Organize `index.html`
+## Learning Objectives
+* Identify useful urls for an app, and be able to implement those routes using PageJS.
+* Recognize other server technologies such as node, new dependencies
 
-* views
-    * `<section id="view-id" class="view">`
-* templates
-    * `<script id="todo-detail-template" type="text/x-handlebars">`
-* scripts
-    * config
-    * vendor
-    * your scripts
-        * `app.js` last
+### Yesterday vs Today
+| Yesterday we... | Today we will... |
+| --------------- | ---------------- |
+| Used jQuery event handlers to simulate page changes. | Use Page.js to handle routes to change pages. |
 
-## Views and init methods
+<hr></hr>
 
-* A view file can still manage more than one view
-* Simplify init method names
-    * For main view, use `init`
-    * For secondary view, use init and name: `initNew`, `initDetail`
-* Call `resetView` and then show view in each `init` method
-* Move templates to view (they were thin anyway)
+* Routing and Controllers
+    * Controller: what does it do?
+        * the chef at our food stand, they take and make orders
+        * handles route requests, gets relevant data
+    * Single-Page Apps
+        * Review: Why single page?
+            * Performance trade-offs
+            * User experience   
+        * jQuery’s role so far
+            * Event handling for our tabs
+            * Will still be hiding and showing content
+        * Benefits of adding a ‘route’ to our page
+            * Lets user (and browser) believe they are navigating
+            * Updates History API to allow for ‘forward’ and ‘back’ actions 
+    * Demo - How
+        * Client-side routing
+            * Using page.js to handle our routes in our client
+            * `app('/<route>', <callback> );` (look familiar?)
+            * `app()`'s callback signature: `(ctx,next) => {}` (a little reminiscent of `(req, res)` in our server!)
 
-## Models
-
-* Move template to view
-* Use `Model.create` instead of instance method
-    * View passes in raw data
-
-## Routing with Page.js
-
-1. Add script to `index.html`. Use cdn, or rawgit if you want to view source
-1. Our page initialization is per view, so we no longer use init script in index.html.
-1. Add `app.js` file at root of `scripts` folder.
-    1. Common view handling, like toggle menu, can live here
-    1. Reference the needed models and view from `module`
-    1. For each view, register a handler function for the client-side route
-        1. Fetch data, if needed
-        1. Call view init (passing to callback if fetching data)
-        1. Call `page(ROUTER_OPTIONS);` to initialize
-
-## Error View
-
-1. Create an error view and template. In model `catch`, call errorCallback that
-    1. consoles the error
-    1. inits the error view with the error
-
-
+## Readings
+* JS&jQ: 424-427 (History API) (Essential)
+* [A Classic MVC blog post](http://blog.codinghorror.com/understanding-model-view-controller/)
+* [Page.js Readme](https://github.com/visionmedia/page.js) (Reference. Read up until "Plugins" section)
